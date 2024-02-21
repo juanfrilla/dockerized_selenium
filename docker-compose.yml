@@ -6,6 +6,6 @@ services:
     ports:
       - "3333:3333"
     environment:
-      - FLASK_ENV=development
+      - FLASK_ENV=production
         # volumes:
         #- .:/app
