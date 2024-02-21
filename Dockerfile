@@ -1,8 +1,8 @@
 FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y wget gnupg curl \
-    && curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
-    && apt-get install -y nodejs
+    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash \
+    && nvm install 16.13.1
 
 ENV FLASK_RUN_PORT=3333
 ENV FLASK_APP=app.py
