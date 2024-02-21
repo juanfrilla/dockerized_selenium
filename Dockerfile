@@ -45,4 +45,4 @@ COPY . .
 EXPOSE 3333
 
 # Run the application
-CMD ["flask", "run", "--host=0.0.0.0", "--port=3333"]
+CMD ["flask","--debug", "run", "--host=0.0.0.0", "--port=3333"]
