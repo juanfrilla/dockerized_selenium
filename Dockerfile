@@ -42,3 +42,11 @@ ENV NODE_VERSION=16.13.1
 
 # Set Node.js in the PATH
 ENV PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+# Stage for installing Google Chrome
+FROM base AS chrome
+
+# Install Google Chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google.list \
+    && apt-get update && apt-get install -y google-chrome-stable
