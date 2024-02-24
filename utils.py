@@ -22,7 +22,7 @@ def get_start_url(data):
 @browser(
     # user_agent=bt.UserAgent.REAL,
     # window_size=bt.WindowSize.REAL,
-    max_retry=5,
+    max_retry=100,
     headless=True,
     create_error_logs=False,
     block_resources=True,
