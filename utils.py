@@ -25,6 +25,9 @@ def get_start_url(data):
     max_retry=5,
     headless=True,
     create_error_logs=False,
+    block_resources=True,
+    close_on_crash=True,
+    is_eager=True,
     create_driver=create_stealth_driver(
         start_url=get_start_url,
         raise_exception=True,
