@@ -1,11 +1,31 @@
 version: '3'
 
 services:
+  flaresolverr:
+    image: 21hsmw/flaresolverr:nodriver
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=debug
+      - DRIVER=nodriver
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=Europe/Madrid
+    ports:
+      - "${PORT:-8191}:8191"
+    restart: unless-stopped
+
   flask_app:
     build: .
+    container_name: flask_app
     ports:
       - "3333:3333"
     environment:
       - FLASK_ENV=production
-        # volumes:
-        #- .:/app
+      - APP_ENV=docker
+    depends_on:
+      - flaresolverr
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
