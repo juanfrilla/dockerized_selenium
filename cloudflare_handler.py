@@ -49,7 +49,7 @@ class CloudFlareSolver(object):
                     session = requests.Session()
                     cls.add_cookies_to_requests_session(session, cookies)
                     
-                    proxy = proxy.get('url').replace("https://", "")
+                    proxy = proxy.get('url').replace("https://", "") if proxy else None
 
                     response = session.get(url_scrape, headers={"user-agent": user_agent}, proxies = {"http": proxy, "https": proxy})
                     if response.status_code == 200 and type(response.content) == bytes and response.content != b"":
